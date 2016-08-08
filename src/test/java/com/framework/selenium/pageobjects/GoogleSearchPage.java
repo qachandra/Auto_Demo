@@ -4,8 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.gkola.framework.core.UIDriver;
 
-public class GoogleSearchPage extends BasePageObject{
+
+public class GoogleSearchPage extends BasicPageObject{
+	
+
+
 	private static WebElement element = null;
 	private static WebDriver driver=null;
 	private static WebElement searchItem=null;
@@ -14,6 +19,11 @@ public class GoogleSearchPage extends BasePageObject{
 	//private static UIElement GoogleSearchButton=new UIElement("textbox","//*[@id=\"sblsbb\"]");
 
 	
+	protected GoogleSearchPage(UIDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
 	public static WebElement getTextBox(WebDriver driver)
 	{
 		

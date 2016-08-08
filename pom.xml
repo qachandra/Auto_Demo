@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.selenium</groupId>
+  <groupId>com.framework.selenium</groupId>
   <artifactId>selenium_ui</artifactId>
-  <version>0.0.1</version>
+  <version>1.0.0</version>
   	<properties>
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
@@ -30,6 +30,11 @@
 	  <version>6.1.1</version>
 	  <scope>test</scope>
 </dependency>
+<dependency>
+<groupId>com.gkola</groupId>
+<artifactId>framework</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
 		
 	</dependencies>
 	<pluginRepositories>
@@ -45,7 +50,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.19</version>
-        <configuration>
+        
+        <!-- <configuration>
        
 		<reportsDirectory>test-output\archive\${timestamp}</reportsDirectory>
          <systemProperties>
@@ -54,7 +60,7 @@
 					        	<value>${browser.NAME}</value>
                         </property>
                         </systemProperties>
-        </configuration>
+        </configuration> -->
       </plugin>				
 	</plugins>
 		<resources>
@@ -81,11 +87,46 @@
 				<artifactId>testng-xslt-plugin</artifactId>
 				<version>1.1</version>
 				<configuration>
-					<!-- Output directory for the report -->
-					<!-- <outputDir>${project.basedir}/target/testng-xslt-report</outputDir> -->
-					<sortTestCaseLinks>true</sortTestCaseLinks>
+					
 					<testDetailsFilter>FAIL,SKIP,PASS,CONF,BY_CLASS</testDetailsFilter>
 					<showRuntimeTotals>true</showRuntimeTotals>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19</version>
+				<configuration>
+				   
+					<systemPropertyVariables>
+						<environment>${env_type}</environment>
+					</systemPropertyVariables>
+					<systemPropertyVariables>
+						<environment>${browser}</environment>
+					</systemPropertyVariables>
+					<suiteXmlFiles>
+						<suiteXmlFile>src\test\resources\testng\${testType}\${suite}</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 		</plugins>
