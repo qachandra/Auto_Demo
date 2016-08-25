@@ -9,6 +9,16 @@ import com.gkola.framework.core.BasicTestObject;
 import com.gkola.framework.core.PageObject;
 import com.gkola.framework.core.UIDriver;
 
+
+
+
+
+
+
+
+
+
+
 public class BaseTestObject extends BasicTestObject {
 	
 	 private static Logger logger = Logger.getLogger(BaseTestObject.class);

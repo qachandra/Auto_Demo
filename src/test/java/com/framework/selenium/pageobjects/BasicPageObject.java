@@ -16,6 +16,8 @@ import com.gkola.framework.util.UIType;
 
 
 
+
+
 public class BasicPageObject extends BasicObject implements PageObject{
 	
 	final static Logger logger = Logger.getLogger(BasicPageObject.class);
@@ -62,8 +64,8 @@ public class BasicPageObject extends BasicObject implements PageObject{
 				e.printStackTrace();
 			}
 	    }
-		
-	
+
+
 
 
 	@Override
@@ -71,6 +73,10 @@ public class BasicPageObject extends BasicObject implements PageObject{
 		// TODO Auto-generated method stub
 		return null;
 	}
+		
+	
+
+
 	
 	
 	  }
