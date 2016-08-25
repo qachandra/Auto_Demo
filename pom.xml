@@ -7,91 +7,8 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
 	</properties>
- <dependencies>	
-	<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-failsafe-plugin</artifactId>
-			<version>2.12.4</version>
-			<type>maven-plugin</type>
-		</dependency>	
-			<dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>2.48.2</version>
-    </dependency> 
-    	<dependency>
-		<groupId>log4j</groupId>
-		<artifactId>log4j</artifactId>
-		<version>1.2.17</version>
-	</dependency> 
-	<dependency>
-	  <groupId>org.testng</groupId>
-	  <artifactId>testng</artifactId>
-	  <version>6.1.1</version>
-	  <scope>test</scope>
-</dependency>
-<dependency>
-<groupId>com.gkola</groupId>
-<artifactId>framework</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-</dependency>
-		
-	</dependencies>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>testng-xslt-plugin</id>
-			<url>http://www.cosminaru.ro/maven/</url>
-		</pluginRepository>
-	</pluginRepositories>
 	<build>
 		<plugins>
-			<plugin>
-			 
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19</version>
-        
-        <!-- <configuration>
-       
-		<reportsDirectory>test-output\archive\${timestamp}</reportsDirectory>
-         <systemProperties>
-					    <property>
-					        	<name>browser.NAME</name>
-					        	<value>${browser.NAME}</value>
-                        </property>
-                        </systemProperties>
-        </configuration> -->
-      </plugin>				
-	</plugins>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-			<resource>
-				<directory>src/test/resources</directory>
-				<filtering>true</filtering>
-				<excludes>
-				    <exclude>
-				        *.exe
-				    </exclude>
-				</excludes>
-			</resource>
-		</resources>
-	</build>
-	<reporting>
-		<plugins>
-			<!-- TestNG-xslt related configuration. -->
-			<plugin>
-				<groupId>org.testng.xslt</groupId>
-				<artifactId>testng-xslt-plugin</artifactId>
-				<version>1.1</version>
-				<configuration>
-					
-					<testDetailsFilter>FAIL,SKIP,PASS,CONF,BY_CLASS</testDetailsFilter>
-					<showRuntimeTotals>true</showRuntimeTotals>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -102,10 +19,17 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+			<!-- RUN TESTNG TEST FROM MAVEN -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-failsafe-plugin</artifactId> 
+				<version>2.12.4</version> <configuration> <suiteXmlFiles> <suiteXmlFile>src\test\resources\testng\demoTest.xml</suiteXmlFile> 
+				<suiteXmlFile>src\test\resources\testng\${suite}</suiteXmlFile> <suiteXmlFile>${suite}.xml</suiteXmlFile> 
+				</suiteXmlFiles> <parallel>methods</parallel> <threadCount>10</threadCount> 
+				</configuration> <executions> <execution> <goals> <goal>integration-test</goal> 
+				<goal>verify</goal> </goals> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19</version>
+				<version>2.17</version>
 				<configuration>
 				   
 					<systemPropertyVariables>
@@ -119,25 +43,61 @@
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
 		</plugins>
-	</reporting>
-	<repositories>
-		<repository>
-			<id>java-net</id>
-			<url>http://download.java.net/maven/2</url>
-		</repository>
-	</repositories>
+	</build>
+ <dependencies>	
+	<!-- <dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-failsafe-plugin</artifactId>
+			<version>2.12.4</version>
+			<type>maven-plugin</type>
+		</dependency> -->	
+			<dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>2.48.2</version>
+    </dependency> 
+    	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	</dependency> 
+	<dependency>
+	  <groupId>org.testng</groupId>
+	  <artifactId>testng</artifactId>
+	  <version>6.9.4</version>
+	  <scope>test</scope>
+	</dependency>
+      <dependency>
+		  <groupId>uk.co.gkola</groupId>
+		  <artifactId>framework</artifactId>
+		  <version>0.0.1</version>
+		</dependency>
+		
+	
+	
+	
+	<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.6.0</version>
+		</dependency>
 
-
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.4.01</version>
+		</dependency>
+	</dependencies>
     
 </project>

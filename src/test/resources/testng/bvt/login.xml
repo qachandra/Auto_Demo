@@ -1,0 +1,13 @@
+<!DOCTYPE Suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="login_BVT" preserve-order="true">
+	<test name="Login BVT Test">
+		<!-- <groups>
+			<run>
+				<include name=""></include>
+			</run>
+		</groups> -->
+		<classes>
+			<class name="com.framework.selenium.test.LoginTest" />
+		</classes>
+	</test>
+	</suite>
